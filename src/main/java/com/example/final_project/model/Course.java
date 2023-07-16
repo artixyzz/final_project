@@ -28,4 +28,5 @@ public class Course {
 
     private LocalTime courseDuration;
 
+
 }
