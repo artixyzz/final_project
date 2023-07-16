@@ -3,7 +3,9 @@ package com.example.final_project.reposiroty;
 import com.example.final_project.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.Optional;
+
 public interface UserRepository extends JpaRepository<User,Long> {
-    User findByEmailOrLogin(String email, String login);
+    Optional<User> findByEmail(String email);
 
 }
