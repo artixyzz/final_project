@@ -37,9 +37,6 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        // rola: USER, authority: ROLE_USER
-        // roles: USER ADMIN OWNER
-        // getAuthorities(): [ROLE_USER, ROLE_ADMIN, ROLE_OWNER]
         return Arrays.stream(roles.split(" "))
                 .map(a -> new SimpleGrantedAuthority("ROLE_" + a))
                 .toList();

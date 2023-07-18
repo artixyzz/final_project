@@ -1,3 +1,5 @@
-insert into role (ADMIN, STUDENT, PROFESSOR);
-insert into user (firstName, lastName, login, password, permissionType, email) values
-                    (test, test, test, test, ADMIN, test);
+insert into user (email, hashed_password,enabled, roles) values
+                ('sda@gmail.com', 'test', true, 'ADMIN');
+
+
+

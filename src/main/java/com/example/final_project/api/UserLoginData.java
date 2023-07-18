@@ -9,7 +9,7 @@ import lombok.Getter;
 @EqualsAndHashCode
 public class UserLoginData {
 
-        private final String login;
+        private final String email;
         private final String password;
     }
 
