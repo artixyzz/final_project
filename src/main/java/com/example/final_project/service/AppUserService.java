@@ -23,4 +23,6 @@ public class AppUserService implements UserDetailsService {
         final Optional<User> optionalAppUser = userRepository.findByEmail(username);
         return optionalAppUser.orElseThrow(() -> new UsernameNotFoundException("Not valid username or password!"));
     }
+
+
 }

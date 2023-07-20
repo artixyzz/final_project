@@ -13,7 +13,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @RequestMapping("/admin/course")
 public class CourseAdminController implements WebMvcConfigurer {
 
-//    private final AdminCourseService courseService;
+
 @GetMapping("/login")
 public String index() {
     return "Zaloguj się!";

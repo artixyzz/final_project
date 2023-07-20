@@ -1,6 +1,7 @@
 package com.example.final_project;
 
 import com.example.final_project.model.User;
+import com.example.final_project.reposiroty.CourseRepository;
 import com.example.final_project.reposiroty.UserRepository;
 import com.example.final_project.service.PasswordUtil;
 import lombok.AllArgsConstructor;
@@ -21,8 +22,12 @@ public class FinalProjectApplication implements CommandLineRunner {
         SpringApplication.run(FinalProjectApplication.class, args);
     }
 
+
+
     @Override
     public void run(String... args) throws Exception {
+
+
 
 
         userRepository.save(
