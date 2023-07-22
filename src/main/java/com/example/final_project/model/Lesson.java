@@ -26,7 +26,7 @@ public class Lesson {
 
     private LocalDate lessonStartDate;
 
-    private LocalTime lessonDuration;
+    private int lessonDurationInHours;
 
 
 }
