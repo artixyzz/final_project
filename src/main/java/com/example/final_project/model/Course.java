@@ -1,9 +1,6 @@
 package com.example.final_project.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,6 +8,7 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 
 @Data
 @Builder
@@ -26,7 +24,11 @@ public class Course {
 
     private LocalDate courseStartDate;
 
-    private LocalTime courseDuration;
+    private int courseDurationInHours;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    private List<Subject> subjects;
+
 
 
 }
