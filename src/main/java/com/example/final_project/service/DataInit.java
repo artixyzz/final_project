@@ -15,8 +15,10 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Component
 @AllArgsConstructor
@@ -28,9 +30,18 @@ public class DataInit {
     private final LessonRepository lessonRepository;
 
     private List<Lesson> savedLessons;
-    private List<Subject> savedSubjects;
     private List<Lesson> savedLessons2;
     private List<Lesson> savedLessons3;
+    private List<Subject> savedSubjects;
+    private List<Subject> savedSubjects2;
+    private List<Subject> savedSubjects3;
+    private List<Subject> savedSubjects4;
+    private List<Subject> savedSubjects5;
+    private List<Subject> savedSubjects6;
+    private List<Subject> savedSubjects7;
+    private List<Course> savedCourses;
+    private List<Course> savedCourses2;
+    private List<Course> savedCourses3;
 
 
     @PostConstruct
@@ -64,78 +75,98 @@ public class DataInit {
     private void initCourses() {
         List<Course> courses = List.of(Course
                         .builder()
-                        .subjects(savedSubjects)
+                        .subjects(Stream.of(savedSubjects, savedSubjects2, savedSubjects3).flatMap(Collection::stream).collect(Collectors.toList()))
                         .courseName("Java")
                         .courseStartDate(LocalDate.of(2023, 10, 1))
                         .courseDurationInHours(350)
-                        .build()
-//                Course
-//                        .builder()
-//                        .courseName("Python")
-//                        .courseStartDate(LocalDate.of(2023,1,5))
-//                        .courseDurationInHours(400)
-//                        .build(),
-//                Course
-//                        .builder()
-//                        .courseName("C++")
-//                        .courseStartDate(LocalDate.of(2023,5,3))
-//                        .courseDurationInHours(380)
-//                        .build()
-        );
-        courseRepository.saveAll(courses);
+                        .build());
+        savedCourses =courseRepository.saveAll(courses);
+
+        List<Course> courses2 = List.of(Course
+                        .builder()
+                        .subjects(Stream.of(savedSubjects, savedSubjects4, savedSubjects5).flatMap(Collection::stream).collect(Collectors.toList()))
+                        .courseName("Python")
+                        .courseStartDate(LocalDate.of(2023,1,5))
+                        .courseDurationInHours(400)
+                        .build());
+        savedCourses2 = courseRepository.saveAll(courses2);
+
+        List<Course> courses3 = List.of(Course
+                        .builder()
+                        .subjects(Stream.of(savedSubjects, savedSubjects6, savedSubjects7).flatMap(Collection::stream).collect(Collectors.toList()))
+                        .courseName("C++")
+                        .courseStartDate(LocalDate.of(2023,5,3))
+                        .courseDurationInHours(380)
+                        .build());
+        savedCourses3 = courseRepository.saveAll(courses3);
 
     }
 
 
     private void initSubjects() {
         List<Subject> subjects = List.of(Subject
-                        .builder()
-                        .lessons(savedLessons.stream().filter(lesson -> {
-                            return lesson.getLessonName().contains("Introduction") || lesson.getLessonName().contains("Extension") ;
-                        }).collect(Collectors.toList()))
-                        .subjectName("MySQL")
-                        .subjectStartDate(LocalDate.of(2023, 11, 2))
-                        .subjectDurationInHours(20)
-                        .build(),
-                Subject
-                        .builder()
-                        .lessons(savedLessons2)
-                        .subjectName("JavaBasic")
-                        .subjectStartDate(LocalDate.of(2023, 12, 1))
-                        .subjectDurationInHours(25)
-                        .build()
-//                Subject
-//                        .builder()
-//                        .subjectName("JavaAdvanced")
-//                        .subjectStartDate(LocalDate.of(2024, 3, 1))
-//                        .subjectDurationInHours(30)
-//                        .build(),
-//                Subject
-//                        .builder()
-//                        .subjectName("PythonBasic")
-//                        .subjectStartDate(LocalDate.of(2024, 6, 3))
-//                        .subjectDurationInHours(15)
-//                        .build(),
-//                Subject
-//                        .builder()
-//                        .subjectName("PythonAdvanced")
-//                        .subjectStartDate(LocalDate.of(2024, 8, 1))
-//                        .subjectDurationInHours(15)
-//                        .build(),
-//                Subject
-//                        .builder()
-//                        .subjectName("C++Basic")
-//                        .subjectStartDate(LocalDate.of(2024, 6, 3))
-//                        .subjectDurationInHours(15)
-//                        .build(),
-//                Subject
-//                        .builder()
-//                        .subjectName("C++Advanced")
-//                        .subjectStartDate(LocalDate.of(2024, 8, 1))
-//                        .subjectDurationInHours(15)
-//                        .build()
-        );
+                .builder()
+                .lessons(savedLessons.stream().filter(lesson -> {
+                    return lesson.getLessonName().contains("Introduction") || lesson.getLessonName().contains("Extension");
+                }).collect(Collectors.toList()))
+                .subjectName("MySQL")
+                .subjectStartDate(LocalDate.of(2023, 11, 2))
+                .subjectDurationInHours(20)
+                .build());
         savedSubjects = subjectRepository.saveAll(subjects);
+
+        List<Subject> subjects2 = List.of(Subject
+                .builder()
+                .lessons(Stream.of(savedLessons, savedLessons2, savedLessons3).flatMap(Collection::stream).collect(Collectors.toList()))
+                .subjectName("JavaBasic")
+                .subjectStartDate(LocalDate.of(2023, 12, 1))
+                .subjectDurationInHours(25)
+                .build());
+        savedSubjects2 = subjectRepository.saveAll(subjects2);
+
+        List<Subject> subjects3 = List.of(Subject
+                .builder()
+                .lessons(Stream.of(savedLessons, savedLessons2, savedLessons3).flatMap(Collection::stream).collect(Collectors.toList()))
+                .subjectName("JavaAdvanced")
+                .subjectStartDate(LocalDate.of(2024, 3, 1))
+                .subjectDurationInHours(30)
+                .build());
+        savedSubjects3 = subjectRepository.saveAll(subjects3);
+
+        List<Subject> subjects4 = List.of(Subject
+                .builder()
+                .lessons(Stream.of(savedLessons, savedLessons2, savedLessons3).flatMap(Collection::stream).collect(Collectors.toList()))
+                .subjectName("PythonBasic")
+                .subjectStartDate(LocalDate.of(2024, 6, 3))
+                .subjectDurationInHours(15)
+                .build());
+        savedSubjects4 = subjectRepository.saveAll(subjects4);
+
+        List<Subject> subjects5 = List.of(Subject
+                .builder()
+                .lessons(Stream.of(savedLessons, savedLessons2, savedLessons3).flatMap(Collection::stream).collect(Collectors.toList()))
+                .subjectName("PythonAdvanced")
+                .subjectStartDate(LocalDate.of(2024, 8, 1))
+                .subjectDurationInHours(15)
+                .build());
+        savedSubjects5 = subjectRepository.saveAll(subjects5);
+
+        List<Subject> subjects6 = List.of(Subject
+                .builder()
+                .lessons(Stream.of(savedLessons, savedLessons2, savedLessons3).flatMap(Collection::stream).collect(Collectors.toList()))
+                .subjectName("C++Basic")
+                .subjectStartDate(LocalDate.of(2024, 6, 3))
+                .subjectDurationInHours(15)
+                .build());
+        savedSubjects6 = subjectRepository.saveAll(subjects6);
+        List<Subject> subjects7 = List.of(Subject
+                .builder()
+                .lessons(Stream.of(savedLessons, savedLessons2, savedLessons3).flatMap(Collection::stream).collect(Collectors.toList()))
+                .subjectName("C++Advanced")
+                .subjectStartDate(LocalDate.of(2024, 8, 1))
+                .subjectDurationInHours(15)
+                .build());
+        savedSubjects7 = subjectRepository.saveAll(subjects7);
 
     }
 
