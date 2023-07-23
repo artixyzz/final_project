@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dostępne kursy</title>
+</head>
+<body>
+<h2>Dostępne kursy</h2>
+<div>
+    <section>
+        <table>
+            <tbody>
+            <tr>
+                <th>Id
+                </th>
+                <th>Nazwa kursu
+                </th>
+                <th>Data rozpoczęcia kursu
+                </th>
+                <th>Czas trwania kursu [godziny]
+                </th>
+                <th>Bloki tematyczne
+                </th>
+            </tr>
+            <tr th:each="course:${courses}">
+                <td th:text="${course.id}"></td>
+                <td th:text="${course.courseName}"></td>
+                <td th:text="${course.courseStartDate}"></td>
+                <td th:text="${course.courseDurationInHours}"></td>
+                <td>
+                    <ul>
+                        <li th:each="subject.subjectName : ${course.subjects}"></li>
+                    </ul>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+</div>
+</body>
+</html>
