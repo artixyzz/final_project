@@ -1,5 +1,6 @@
 package com.example.final_project.service;
 import com.example.final_project.dto.CourseDto;
+import com.example.final_project.dto.RequestCourseDto;
 import com.example.final_project.model.Course;
 import com.example.final_project.model.Subject;
 import com.example.final_project.reposiroty.CourseRepository;
@@ -27,13 +28,13 @@ public class CourseService {
         return courseRepository.findById(id).orElseThrow(() -> new RuntimeException("Not found"));
     }
 
-    public void save(CourseDto courseDto){
-        List<Subject> subjects = subjectRepository.findAllById(courseDto.getSubjects());
+    public void save(RequestCourseDto requestCourseDto){
+        List<Subject> subjects = subjectRepository.findAllById(requestCourseDto.getSubjects());
         Course course = Course
                 .builder()
-                .courseName(courseDto.getCourseName())
-                .courseStartDate(courseDto.getCourseStartDate())
-                .courseDurationInHours(courseDto.getCourseDurationInHours())
+                .courseName(requestCourseDto.getCourseName())
+                .courseStartDate(requestCourseDto.getCourseStartDate())
+                .courseDurationInHours(requestCourseDto.getCourseDurationInHours())
                 .subjects(subjects)
                 .build();
         courseRepository.save(course);

@@ -57,15 +57,22 @@ public class DataInit {
     private void initUser() {
         List<User> users = List.of(User
                         .builder()
-                        .roles("USER ADMIN")
+                        .roles("ADMIN")
                         .email("ewa@sda.pl")
                         .hashedPassword(passwordUtil.bcryptEncryptor("password"))
                         .enabled(true)
                         .build(),
                 User
                         .builder()
-                        .roles("USER")
+                        .roles("STUDENT")
                         .email("ania@sda.pl")
+                        .hashedPassword(passwordUtil.bcryptEncryptor("password"))
+                        .enabled(true)
+                        .build(),
+                User
+                        .builder()
+                        .roles("PROFESSOR")
+                        .email("kazik@sda.pl")
                         .hashedPassword(passwordUtil.bcryptEncryptor("password"))
                         .enabled(true)
                         .build());
