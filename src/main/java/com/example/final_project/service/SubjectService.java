@@ -21,14 +21,15 @@ public class SubjectService {
     private final LessonRepository lessonRepository;
 
 
-    public List<Subject> findAllCourses() {
+    public List<Subject> findAllSubjects() {
         return subjectRepository.findAll();
     }
+
     public Subject findById(long id) {
         return subjectRepository.findById(id).orElseThrow(() -> new RuntimeException("Not found"));
     }
 
-    public void save(SubjectDto subjectDto){
+    public void save(SubjectDto subjectDto) {
         List<Lesson> lessons = lessonRepository.findAllById(subjectDto.getLessons());
         Subject subject = Subject
                 .builder()
@@ -43,20 +44,21 @@ public class SubjectService {
     public void deleteCourseById(long id) {
         subjectRepository.deleteById(id);
     }
-    public void updateCourse(CourseDto courseDto){
-        if (courseDto.getId() == null){
+
+    public void updateSubject(SubjectDto subjectDto) {
+        if (subjectDto.getId() == null) {
             throw new RuntimeException("Id can not be null");
         }
-        List<Subject> subjects = subjectRepository.findAllById(courseDto.getSubjects());
-        Course course = Course
+        List<Lesson> lessons = lessonRepository.findAllById(subjectDto.getLessons());
+        Subject subject = Subject
                 .builder()
-                .id(courseDto.getId())
-                .courseName(courseDto.getCourseName())
-                .courseStartDate(courseDto.getCourseStartDate())
-                .courseDurationInHours(courseDto.getCourseDurationInHours())
-                .subjects(subjects)
+                .id(subjectDto.getId())
+                .subjectName(subjectDto.getSubjectName())
+                .subjectStartDate(subjectDto.getSubjectStartDate())
+                .subjectDurationInHours(subjectDto.getSubjectDurationInHours())
+                .lessons(lessons)
                 .build();
-        courseRepository.save(course);
+        subjectRepository.save(subject);
     }
 }
 

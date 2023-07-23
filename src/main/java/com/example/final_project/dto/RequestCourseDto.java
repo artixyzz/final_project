@@ -12,6 +12,7 @@ import org.hibernate.validator.constraints.Range;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 
 @Data
 @Builder
@@ -26,6 +27,8 @@ public class RequestCourseDto {
     private LocalDate courseStartDate;
 
     @Range(min=200, message="Kurs musi trwać minimum 200 godzin")
-    private LocalTime courseDuration;
+    private int courseDurationInHours;
+
+    private List<Long> subjects;
 
 }

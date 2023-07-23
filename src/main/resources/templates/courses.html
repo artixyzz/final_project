@@ -29,7 +29,7 @@
                 <td th:text="${course.courseDurationInHours}"></td>
                 <td>
                     <ul>
-                        <li th:each="subject.subjectName : ${course.subjects}"></li>
+                        <li th:each="subject: ${course.subjects}" ><a th:href ="@{'/subjects/' + ${subject.id}}" th:text ="${subject.subjectName}"></a></li>
                     </ul>
                 </td>
             </tr>
@@ -37,5 +37,8 @@
         </table>
     </section>
 </div>
+<form>
+    <input type="button" value="Back" onclick="history.go(-1)">
+</form>
 </body>
 </html>
