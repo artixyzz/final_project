@@ -1,38 +1,20 @@
 package com.example.final_project.controller;
-
-import com.example.final_project.model.Course;
 import com.example.final_project.service.CourseService;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
-import java.util.List;
-
-
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+@AllArgsConstructor
 @Controller
 public class HomeController {
-
     private final CourseService courseService;
-
-    public HomeController(CourseService courseService) {
-        this.courseService = courseService;
-    }
-
     @GetMapping("/")
-    public String homePage (){
-        return "homepage";
+    public String homePage() {
+        return "homePage";
     }
-
-
-//    @GetMapping("/courses")
-//        public ResponseEntity<List<Course>>findAllCourses(@RequestParam(required = false) String courseName) {
-//
-//        List<Course> courses = new ArrayList<Course>();
-//
-//        return "courses";
-//
-//    }
-
+    @GetMapping("/courses")
+    public String findAllCourses(Model model) {
+        model.addAttribute("courses", courseService.findAllCourses());
+        return "courses";
+    }
 }

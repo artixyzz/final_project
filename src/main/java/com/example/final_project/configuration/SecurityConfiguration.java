@@ -26,6 +26,7 @@ import org.springframework.security.web.SecurityFilterChain;
                                     .requestMatchers("/admin/**").hasRole("ADMIN")
                                     .requestMatchers("/student/**").hasRole("STUDENT")
                                     .requestMatchers("/professor/**").hasRole("PROFESSOR")
+                                    .anyRequest().permitAll()
 
                     )
                     .formLogin(AbstractAuthenticationFilterConfigurer::permitAll)
