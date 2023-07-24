@@ -81,30 +81,30 @@ public class DataInit {
 
     private void initCourses() {
         List<Course> courses = List.of(Course
-                        .builder()
-                        .subjects(Stream.of(savedSubjects, savedSubjects2, savedSubjects3).flatMap(Collection::stream).collect(Collectors.toList()))
-                        .courseName("Java")
-                        .courseStartDate(LocalDate.of(2023, 10, 1))
-                        .courseDurationInHours(350)
-                        .build());
-        savedCourses =courseRepository.saveAll(courses);
+                .builder()
+                .subjects(Stream.of(savedSubjects, savedSubjects2, savedSubjects3).flatMap(Collection::stream).collect(Collectors.toList()))
+                .courseName("Java")
+                .courseStartDate(LocalDate.of(2023, 10, 1))
+                .courseDurationInHours(350)
+                .build());
+        savedCourses = courseRepository.saveAll(courses);
 
         List<Course> courses2 = List.of(Course
-                        .builder()
-                        .subjects(Stream.of(savedSubjects, savedSubjects4, savedSubjects5).flatMap(Collection::stream).collect(Collectors.toList()))
-                        .courseName("Python")
-                        .courseStartDate(LocalDate.of(2023,1,5))
-                        .courseDurationInHours(400)
-                        .build());
+                .builder()
+                .subjects(Stream.of(savedSubjects, savedSubjects4, savedSubjects5).flatMap(Collection::stream).collect(Collectors.toList()))
+                .courseName("Python")
+                .courseStartDate(LocalDate.of(2023, 1, 5))
+                .courseDurationInHours(400)
+                .build());
         savedCourses2 = courseRepository.saveAll(courses2);
 
         List<Course> courses3 = List.of(Course
-                        .builder()
-                        .subjects(Stream.of(savedSubjects, savedSubjects6, savedSubjects7).flatMap(Collection::stream).collect(Collectors.toList()))
-                        .courseName("C++")
-                        .courseStartDate(LocalDate.of(2023,5,3))
-                        .courseDurationInHours(380)
-                        .build());
+                .builder()
+                .subjects(Stream.of(savedSubjects, savedSubjects6, savedSubjects7).flatMap(Collection::stream).collect(Collectors.toList()))
+                .courseName("C++")
+                .courseStartDate(LocalDate.of(2023, 5, 3))
+                .courseDurationInHours(380)
+                .build());
         savedCourses3 = courseRepository.saveAll(courses3);
 
     }
@@ -181,16 +181,16 @@ public class DataInit {
 
     private void initLesson() {
         List<Lesson> lessons = List.of(Lesson
-                        .builder()
-                        .lessonName("Introduction")
-                        .lessonStartDate(LocalDate.of(2023, 10, 16))
-                        .lessonDurationInHours(32)
-                        .build());
+                .builder()
+                .lessonName("Introduction")
+                .lessonStartDate(LocalDate.of(2023, 10, 16))
+                .lessonDurationInHours(32)
+                .build());
 
         savedLessons = lessonRepository.saveAll(lessons);
         List<Lesson> lessons2 = List.of(Lesson
-                        .builder()
-                        .lessonName("Extension")
+                .builder()
+                .lessonName("Extension")
                 .lessonStartDate(LocalDate.of(2023, 6, 14))
                 .lessonDurationInHours(16)
                 .build());
@@ -203,7 +203,6 @@ public class DataInit {
                 .lessonDurationInHours(32)
                 .build());
         savedLessons3 = lessonRepository.saveAll(lessons3);
-
 
 
     }

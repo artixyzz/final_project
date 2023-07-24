@@ -21,8 +21,8 @@ import org.springframework.security.web.SecurityFilterChain;
         @Bean
         public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
             return http
-                    .authorizeHttpRequests(requiest ->
-                            requiest
+                    .authorizeHttpRequests(request ->
+                            request
                                     .requestMatchers("/admin/**").hasRole("ADMIN")
                                     .requestMatchers("/student/**").hasRole("STUDENT")
                                     .requestMatchers("/professor/**").hasRole("PROFESSOR")
