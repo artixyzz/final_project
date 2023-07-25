@@ -1,6 +1,8 @@
 package com.example.final_project.controller;
 
+import com.example.final_project.dto.CourseDto;
 import com.example.final_project.dto.RequestCourseDto;
+import com.example.final_project.model.Course;
 import com.example.final_project.service.CourseService;
 import com.example.final_project.service.SubjectService;
 import jakarta.validation.Valid;
@@ -9,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @AllArgsConstructor
@@ -29,11 +32,13 @@ public class HomeController {
     }
 
     @GetMapping("/courses/create")
-    public String createCourse(Model model) {
+    public String createCourse( Model model) {
         model.addAttribute("subject", subjectService.findAllSubjects());
         model.addAttribute("course", RequestCourseDto.builder().build());
         return "courseCreate";
     }
+
+
 
     @PostMapping("/courses/create")
     public String saveCourse(Model model, @Valid @ModelAttribute RequestCourseDto requestCourseDto) {

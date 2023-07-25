@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dostępne kursy</title>
+</head>
+<body>
+<h2>MySQL</h2>
+<div>
+    <section>
+        <table>
+            <tbody>
+            <tr>
+                <th>
+                    Lekcje
+                </th>
+            </tr>
+
+            <tr>
+                <ul> th:if="${subject.subjectName == 'MySQL'}"
+                     <p>th:else="${}</p>
+                    }</ul>
+<!--                <ul th:if="${subject == 'MySQL'}">-->
+<!--                     th:text="${course.courseName}"-->
+<!--                        <ul>-->
+<!--                        <p>-->
+<!--                            <li th:each="lesson ${subject.lessons}"><a-->
+<!--                                    th:text="${lesson.lessonName}"></a></li>-->
+<!--                        </p>-->
+
+<!--                    </ul>-->
+<!--                </ul>-->
+            </tr>
+            </tbody>
+        </table>
+    </section>
+</div>
+<form>
+    <input type="button" value="Back" onclick="history.go(-1)">
+</form>
+</body>
+</html>

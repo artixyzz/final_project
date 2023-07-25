@@ -7,6 +7,9 @@
 <body>
 
 <form th:action="@{/courses/create}" method="post" th:object="${course}">
+
+
+
     <label>Nazwa</label></br>
     <input type="text" th:field="*{courseName}"/> <br>
 
