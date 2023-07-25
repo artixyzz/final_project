@@ -6,16 +6,13 @@ import com.example.final_project.model.Subject;
 import com.example.final_project.reposiroty.CourseRepository;
 import com.example.final_project.reposiroty.SubjectRepository;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import java.util.ArrayList;
-import java.util.HashMap;
+
 import java.util.List;
-import java.util.Map;
 
 @AllArgsConstructor
 @Service
+
 public class CourseService {
     private final CourseRepository courseRepository;
     private final SubjectRepository subjectRepository;
@@ -24,7 +21,7 @@ public class CourseService {
     public List<Course> findAllCourses() {
         return courseRepository.findAll();
     }
-    public Course findById(long id) {
+    public Course findAllById(long id) {
         return courseRepository.findById(id).orElseThrow(() -> new RuntimeException("Not found"));
     }
 
