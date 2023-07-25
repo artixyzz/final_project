@@ -9,10 +9,7 @@ import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @AllArgsConstructor
 @Controller
@@ -47,6 +44,27 @@ public class HomeController {
         return "/courses";
 
     }
+
+    @GetMapping("/courses/update")
+    public String updateCourse( Model model) {
+        model.addAttribute("subject", subjectService.findAllSubjects());
+        model.addAttribute("course", CourseDto.builder().build());
+        return "courseUpdate";
+    }
+
+    @PostMapping("/courses/update")
+    public String saveUpdatedCourse(Model model, @Valid @ModelAttribute CourseDto CourseDto) {
+        courseService.updateCourse(CourseDto);
+        model.addAttribute("courses", courseService.findAllCourses());
+        return "/courses";
+    }
+
+    @GetMapping("/courses/delete")
+    public String deleteCourse(@RequestParam long id) {
+        courseService.deleteCourseById(id);
+        return "courses";
+    }
+
 
     @GetMapping("/subjects/1")
     public String subjects1(Model model) {

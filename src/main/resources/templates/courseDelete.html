@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Usuń kurs</title>
+</head>
+<body>
+
+<form th:action="@{/courses/delete}" method="post" th:object="${course}">
+
+    <label>ID</label></br>
+    <input type="number" th:field="*{id}"/> <br>
+
+    <button type="submit">Usuń</button>
+</form>
+
+</body>
+</html>

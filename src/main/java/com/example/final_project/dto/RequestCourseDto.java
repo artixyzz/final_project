@@ -17,7 +17,6 @@ import java.util.List;
 @Builder
 public class RequestCourseDto {
 
-
     @Length(min=2, max=20)
     private String courseName;
 
