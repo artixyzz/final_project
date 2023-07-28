@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:fragment="head(title)">
+  <meta charset="UTF-8">
+  <title>Napisz do nas :)</title>
+  <link rel="stylesheet" href="/webjars/bootstrap/5.3.0/css/bootstrap.min.css">
+  <script src="/webjars/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+    }
+    footer {
+      background-color: #333;
+      color: #fff;
+      padding: 1rem;
+      text-align: center;
+      margin-top: auto;
+    }
+  </style>
+</head>
+<body style="background-color:lightgray;">
+</br>
+<div class="container-fluid">
+  <h1>Masz dodatkowe pytania? Napisz do nas!</h1>
+  <hr class="border border-primary border-3 opacity-75">
+  <form>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Podaj swój email</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Wpisz swoje pytanie, a my odpowiemy w ciągu maksymalnie 48h!</label>
+      <input type="password" class="form-control" id="exampleInputPassword1">
+    </div>
+    <div class="mb-3 form-check">
+      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+      <label class="form-check-label" for="exampleCheck1">Wyślij kopię zapytania na mojego maila</label>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  <button onclick="history.back()" class="btn btn-secondary">Wróć do storny głównej</button>
+</div>
+<footer>
+  &copy; 2023 TechMaster. Wszelkie prawa zastrzeżone.
+</footer>
+</body>
+</html>
