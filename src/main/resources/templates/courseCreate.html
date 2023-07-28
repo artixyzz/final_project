@@ -68,11 +68,13 @@
     <input type="text" id="courseStartDate" th:field="*{courseStartDate}"/> <br>
     <label for="courseDurationInHours">Czas trwania kursu (godz)</label><br>
     <input type="number" id="courseDurationInHours" th:field="*{courseDurationInHours}"/> <br>
-    <label for="subjects">Wybierz blok tematyczny</label><br>
-    <select id="subjects" name="subjects" multiple>
-        <option value="Lekcja 1">Lekcja 1</option>
-        <option value="Lekcja 2">Lekcja 2</option>
-        <option value="Lekcja 3">Lekcja 3</option>
+    <label>Wybierz blok tematyczny</label><br>
+    <select th:field="*{subjects}">
+        <option
+                th:each="subject:${subject}"
+                th:text="${subject.subjectName}"
+                th:value="${subject.id}">
+        </option>
         <!-- Dodaj więcej opcji lekcji w odpowiedniej formie -->
     </select>
     <button type="submit">Zapisz</button>
@@ -83,3 +85,12 @@
 </footer>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
