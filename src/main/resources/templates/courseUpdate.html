@@ -3,26 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <title>Zaktualizuj kurs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        footer {
+            background-color: #333;
+            text-align: center;
+            color: #fff;
+            padding: 1rem;
+            margin-top: auto;
+        }
+    </style>
 </head>
 <body>
-
 <form th:action="@{/courses/update}" method="post" th:object="${course}">
-
     <label>ID</label></br>
     <input type="number" th:field="*{id}"/> <br>
-
     <label>Nazwa</label></br>
     <input type="text" th:field="*{courseName}"/> <br>
-
     <label>Start kursu(YYYY-MM-DD)</label></br>
     <input type="text" th:field="*{courseStartDate}"/> <br>
-
     <label>Czas trwania kursu(godz)</label></br>
     <input type="number" th:field="*{courseDurationInHours}"/> <br>
-
-
     <button type="submit">Zaktualizuj</button>
 </form>
-
+<footer>
+    &copy; 2023 TechMaster. Wszelkie prawa zastrzeżone.
+</footer>
 </body>
 </html>

@@ -12,6 +12,7 @@ import org.hibernate.validator.constraints.Range;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 
 @Data
 @Builder
@@ -27,5 +28,7 @@ public class RequestSubjectDto {
 
     @Range(min=5, message="Blok zajęć musi trwać minimum 5 dni")
     private LocalTime subjectDuration;
+
+    private List<Long> lessons;
 
 }
