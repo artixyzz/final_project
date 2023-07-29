@@ -1,6 +1,7 @@
 package com.example.final_project.controller;
 import com.example.final_project.dto.CourseDto;
 import com.example.final_project.dto.RequestCourseDto;
+import com.example.final_project.dto.RequestSubjectDto;
 import com.example.final_project.service.CourseService;
 import com.example.final_project.service.LessonService;
 import com.example.final_project.service.SubjectService;
@@ -37,6 +38,19 @@ public class HomeController {
 //        model.addAttribute("subjects", subjectService.findAllSubjects());
 //        return "subjects/1";
 //    }
+
+    @GetMapping("/subject/create")
+    public String createSubject(Model model) {
+        model.addAttribute("lesson", lessonService.findAllLessons());
+        model.addAttribute("subject", RequestSubjectDto.builder().build());
+        return "subjectCreate";
+    }
+    @PostMapping("/subject/create")
+    public String saveSubject(Model model, @Valid @ModelAttribute RequestSubjectDto requestSubjectDto) {
+        subjectService.save(requestSubjectDto);
+        model.addAttribute("subject", subjectService.findAllSubjects());
+        return "redirect:/courses/create";
+    }
     @GetMapping("/courses/create")
     public String createCourse(Model model) {
         model.addAttribute("subject", subjectService.findAllSubjects());

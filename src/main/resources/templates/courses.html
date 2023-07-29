@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <meta charset="UTF-8">
@@ -41,8 +42,12 @@
                 </th>
                 <th scope="col">Bloki tematyczne
                 </th>
+                <div sec:authorize="hasRole('ROLE_ADMIN')">
                 <th scope="col">Edytuj</th>
-                <th scope="col">Usuń</th>
+                </div>
+                <div sec:authorize="hasRole('ROLE_ADMIN')">
+                <th  scope="col">Usuń</th>
+                </div>
             </tr>
             </thead>
             <tbody>
@@ -58,14 +63,18 @@
                     </ul>
                 </td>
                 <td>
+                    <div sec:authorize="hasRole('ROLE_ADMIN')">
                     <a th:href="@{/courses/update(id=${course.id})}">
                         <button type="submit">Edytuj</button>
                     </a>
+                    </div>
                 </td>
                 <td>
+                    <div sec:authorize="hasRole('ROLE_ADMIN')">
                     <form th:action="@{'/courses/delete/{id}'(id=${course.id})}" th:method="get">
                         <button type="submit">Usuń</button>
                     </form>
+                    </div>
                 </td>
             </tr>
             </tbody>

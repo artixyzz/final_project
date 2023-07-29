@@ -1,13 +1,12 @@
 package com.example.final_project.service;
 
-import com.example.final_project.dto.CourseDto;
+import com.example.final_project.dto.RequestSubjectDto;
 import com.example.final_project.dto.SubjectDto;
-import com.example.final_project.model.Course;
 import com.example.final_project.model.Lesson;
 import com.example.final_project.model.Subject;
-import com.example.final_project.reposiroty.CourseRepository;
 import com.example.final_project.reposiroty.LessonRepository;
 import com.example.final_project.reposiroty.SubjectRepository;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -29,7 +28,7 @@ public class SubjectService {
         return subjectRepository.findById(id).orElseThrow(() -> new RuntimeException("Not found"));
     }
 
-    public void save(SubjectDto subjectDto) {
+    public void save(@Valid RequestSubjectDto subjectDto) {
         List<Lesson> lessons = lessonRepository.findAllById(subjectDto.getLessons());
         Subject subject = Subject
                 .builder()

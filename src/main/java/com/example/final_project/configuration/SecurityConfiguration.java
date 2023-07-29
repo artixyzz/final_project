@@ -9,10 +9,14 @@ import org.springframework.security.config.annotation.web.configurers.LogoutConf
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.thymeleaf.TemplateEngine;
+import org.thymeleaf.dialect.IDialect;
+import org.thymeleaf.spring6.SpringTemplateEngine;
 
 @Configuration
     @EnableWebSecurity
     public class SecurityConfiguration {
+
         @Bean
         public PasswordEncoder passwordEncoder() {
             return new BCryptPasswordEncoder();
@@ -23,12 +27,14 @@ import org.springframework.security.web.SecurityFilterChain;
             return http
                     .authorizeHttpRequests(request ->
                             request
-                                    .requestMatchers("/admin/**").hasRole("ADMIN")
-                                    .requestMatchers("/student/**").hasRole("STUDENT")
-                                    .requestMatchers("/professor/**").hasRole("PROFESSOR")
-                                    .anyRequest().permitAll()
+                                    .requestMatchers("/admin/**").hasAuthority("ROLE_ADMIN")
+                                    .requestMatchers("/student/**").hasAuthority("ROLE_STUDENT")
+                                    .requestMatchers("/professor/**").hasAuthority("ROLE_PROFESSOR")
+                                    .anyRequest().authenticated()
+
 
                     )
+
                     .formLogin(AbstractAuthenticationFilterConfigurer::permitAll)
                     .logout(LogoutConfigurer::permitAll)
                     .build();

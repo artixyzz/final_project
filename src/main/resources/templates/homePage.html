@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -100,7 +100,8 @@
 </head>
 <body>
 <header>
-    <div class="logo">Nasza Szkoła</div>
+    <div class="logo">Nasza Szkoła, witaj </div>
+    <div sec:authentication="name"></div>
     <nav>
         <a href="/ourMission">Nasza misja</a>
         <a href="/contact">Kontakt</a>

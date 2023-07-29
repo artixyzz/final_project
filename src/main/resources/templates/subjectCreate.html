@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dodaj nowy blok tematyczny</title>
+  <style>
+    form {
+      max-width: 400px;
+      margin: 30px auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    label {
+      font-weight: bold;
+    }
+    input[type="text"],
+    input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    button[type="submit"] {
+      background-color: #3366CC;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      width: 100%;
+    }
+    button[type="submit"]:hover {
+      background-color: #125699;
+    }
+    select {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    footer {
+      background-color: #333;
+      text-align: center;
+      color: #fff;
+      padding: 1rem;
+      margin-bottom: 520px;
+    }
+  </style>
+</head>
+<body>
+<h1>Dodaj nowy blok tematyczny</h1>
+<form th:action="@{/subject/create}" method="post" th:object="${subject}">
+  <label for="subjectName">Nazwa bloku tematycznego</label><br>
+  <input type="text" id="subjectName" th:field="*{subjectName}"/> <br>
+  <label for="subjectStartDate">Start bloku (YYYY-MM-DD)</label><br>
+  <input type="text" id="subjectStartDate" th:field="*{subjectStartDate}"/> <br>
+  <label for="subjectDurationInHours">Czas trwania bloku (godz)</label><br>
+  <input type="number" id="subjectDurationInHours" th:field="*{subjectDurationInHours}"/> <br>
+  <label>Wybierz lekcje</label><br>
+  <select th:field="*{lessons}">
+    <option
+            th:each="lesson:${lesson}"
+            th:text="${lesson.lessonName}"
+            th:value="${lesson.id}">
+    </option>
+  </select>
+  <select th:field="*{lessons}">
+    <option
+            th:each="lesson:${lesson}"
+            th:text="${lesson.lessonName}"
+            th:value="${lesson.id}">
+    </option>
+  </select>
+  <button type="submit">Zapisz</button>
+</form>
+<button onclick="history.back()" class="btn btn-secondary">Wróć do storny głównej</button>
+<footer>
+  &copy; 2023 TechMaster. Wszelkie prawa zastrzeżone.
+</footer>
+</body>
+</html>
+
+
+
+
+

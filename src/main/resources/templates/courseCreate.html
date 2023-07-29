@@ -4,6 +4,15 @@
     <meta charset="UTF-8">
     <title>Dodaj nowy kurs</title>
     <style>
+        .course-card {
+            background-color: #F5F5F5;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin: 1rem;
+            padding: 1rem;
+            width: 250px;
+        }
         form {
             max-width: 400px;
             margin: 30px auto;
@@ -83,6 +92,11 @@
                 th:value="${subject.id}">
         </option>
     </select>
+
+    <div class="course-card">
+        <a href="/subject/create" class="btn">Lub stwórz nowy blok tematyczny</a>
+    </div>
+
     <button type="submit">Zapisz</button>
 </form>
 <button onclick="history.back()" class="btn btn-secondary">Wróć do storny głównej</button>

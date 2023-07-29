@@ -27,7 +27,7 @@ public class RequestSubjectDto {
     private LocalDate subjectStartDate;
 
     @Range(min=5, message="Blok zajęć musi trwać minimum 5 dni")
-    private LocalTime subjectDuration;
+    private int subjectDurationInHours;
 
     private List<Long> lessons;
 
