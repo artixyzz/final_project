@@ -75,7 +75,13 @@
                 th:text="${subject.subjectName}"
                 th:value="${subject.id}">
         </option>
-        <!-- Dodaj więcej opcji lekcji w odpowiedniej formie -->
+    </select>
+    <select th:field="*{subjects}">
+        <option
+                th:each="subject:${subject}"
+                th:text="${subject.subjectName}"
+                th:value="${subject.id}">
+        </option>
     </select>
     <button type="submit">Zapisz</button>
 </form>

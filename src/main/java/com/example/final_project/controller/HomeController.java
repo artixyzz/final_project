@@ -7,10 +7,11 @@ import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
+import org.xml.sax.Attributes;
+
 @AllArgsConstructor
 @Controller
 public class HomeController {
@@ -32,6 +33,11 @@ public class HomeController {
     public String findAllCourses(Model model) {
         model.addAttribute("courses", courseService.findAllCourses());
         return "courses";
+    }
+    @GetMapping("/subjects")
+    public String findAllSubjects(Model model) {
+        model.addAttribute("subjects", subjectService.findAllSubjects());
+        return "subjects/1";
     }
     @GetMapping("/courses/create")
     public String createCourse(Model model) {
@@ -57,10 +63,13 @@ public class HomeController {
         model.addAttribute("courses", courseService.findAllCourses());
         return "/courses";
     }
-    @GetMapping("/courses/delete")
-    public String deleteCourse(@RequestParam long id) {
+    @GetMapping("/courses/delete/{id}")
+    public String deleteCourse(@PathVariable Long id) {
         courseService.deleteCourseById(id);
-        return "courses";
+//            attributes.addFlashAttribute("flashAttribute", "redirectWithRedirectView");
+//            attributes.addAttribute("attribute", "redirectWithRedirectView");
+//            return new RedirectView("courses");
+        return "redirect:/courses";
     }
     @GetMapping("/subjects/1")
     public String subjects1(Model model) {
