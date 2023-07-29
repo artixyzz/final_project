@@ -7,7 +7,7 @@
     <title>Dostępne lekcje</title>
 </head>
 <body>
-<h2>MySQL</h2>
+<h2 th:text="${subject.subjectName}"></h2>
 <div>
     <section>
         <table class="table table-striped" >
@@ -15,40 +15,30 @@
             <tr>
                 <th scope="col">Id
                 </th>
-                <th scope="col">Blok tematyczne
+                <th scope="col">Nazwa lekcji
                 </th>
-                <th scope="col">Data rozpoczęcia bloku
+                <th scope="col">Data rozpoczęcia
                 </th>
-                <th scope="col">Czas trwania bloku [godziny]
-                </th>
-                <th scope="col">Lekcje
+                <th scope="col">Czas trwania [godziny]
                 </th>
                 <th scope="col">Edytuj</th>
                 <th scope="col">Usuń</th>
             </tr>
             </thead>
             <tbody>
-            <tr th:each="subject:${subjects}">
-                <th scope="row" th:text="${subject.id}"></th>
-                <td th:text="${subject.subjectName}"></td>
-                <td th:text="${subject.subjectStartDate}"></td>
-                <td th:text="${subject.subjectDurationInHours}"></td>
+            <tr th:each="lesson:${subject.lessons}">
+                <th scope="row" th:text="${lesson.id}"></th>
+                <td th:text="${lesson.lessonName}"></td>
+                <td th:text="${lesson.lessonStartDate}"></td>
+                <td th:text="${lesson.lessonDurationInHours}"></td>
                 <td>
-                    <ul>
-                        <li th:each="lesson: ${subject.lessons}"><a th:href="@{'/lessons/' + ${lesson.id}}"
-                                                                     th:text="${lesson.lessonName}"></a></li>
-                    </ul>
+                        <button type="submit">Edytuj</button>
+
                 </td>
-<!--                <td>-->
-<!--                    <a th:href="@{/courses/update(id=${subject.id})}">-->
-<!--                        <button type="submit">Edytuj</button>-->
-<!--                    </a>-->
-<!--                </td>-->
-<!--                <td>-->
-<!--                    <form th:action="@{'/courses/delete/{id}'(id=${course.id})}" th:method="get">-->
-<!--                        <button type="submit">Usuń</button>-->
-<!--                    </form>-->
-<!--                </td>-->
+                <td>
+                        <button type="submit">Usuń</button>
+
+                </td>
             </tr>
             </tbody>
         </table>
