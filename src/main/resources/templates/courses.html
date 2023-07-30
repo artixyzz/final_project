@@ -51,8 +51,8 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="course:${courses}">
-                <th scope="row" th:text="${course.id}"></th>
+            <tr th:each="course, iter:${courses}">
+                <th scope="row" th:text="${iter.index+1}"></th>
                 <td th:text="${course.courseName}"></td>
                 <td th:text="${course.courseStartDate}"></td>
                 <td th:text="${course.courseDurationInHours}"></td>
