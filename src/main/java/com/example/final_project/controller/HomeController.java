@@ -2,6 +2,7 @@ package com.example.final_project.controller;
 import com.example.final_project.dto.CourseDto;
 import com.example.final_project.dto.RequestCourseDto;
 import com.example.final_project.dto.RequestSubjectDto;
+import com.example.final_project.service.AppUserService;
 import com.example.final_project.service.CourseService;
 import com.example.final_project.service.LessonService;
 import com.example.final_project.service.SubjectService;
@@ -16,10 +17,13 @@ public class HomeController {
     private final CourseService courseService;
     private final SubjectService subjectService;
     private final LessonService lessonService;
+    private final AppUserService appUserService;
     @GetMapping("/")
     public String homePage() {
         return "homePage";
     }
+
+
     @GetMapping("/ourMission")
     public String showOurMission() {
         return "ourMission";
@@ -78,15 +82,17 @@ public class HomeController {
     @GetMapping("/courses/delete/{id}")
     public String deleteCourse(@PathVariable Long id) {
         courseService.deleteCourseById(id);
-//            attributes.addFlashAttribute("flashAttribute", "redirectWithRedirectView");
-//            attributes.addAttribute("attribute", "redirectWithRedirectView");
-//            return new RedirectView("courses");
         return "redirect:/courses";
     }
     @GetMapping("/subjects/{id}")
     public String subjects(Model model,@PathVariable Long id) {
         model.addAttribute("subject", subjectService.findById(id));
         return "subject";
+    }
+    @GetMapping("/courses/register/{id}")
+    public String registerForCourse(@PathVariable Long id) {
+        appUserService.registerForCourse(id);
+        return "userCourses";
     }
 }
 

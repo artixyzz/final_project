@@ -25,6 +25,7 @@ public class CourseService {
         return courseRepository.findById(id).orElseThrow(() -> new RuntimeException("Not found"));
     }
 
+
     public void save(RequestCourseDto requestCourseDto){
         List<Subject> subjects = subjectRepository.findAllById(requestCourseDto.getSubjects());
         Course course = Course

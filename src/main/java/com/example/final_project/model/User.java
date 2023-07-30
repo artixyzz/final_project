@@ -9,6 +9,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Builder
@@ -35,6 +36,8 @@ public class User implements UserDetails {
 
     private String roles;
 
+    @OneToMany
+    private List<Course> userCourses;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -72,4 +75,5 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return enabled;
     }
+
 }

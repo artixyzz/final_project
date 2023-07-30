@@ -119,12 +119,15 @@
             </p>
             <a href="/courses" class="btn">Więcej informacji</a>
         </div>
+        <div sec:authorize="hasRole('ROLE_ADMIN')">
         <div class="course-card">
+
             <h3>Dodaj nowy kurs</h3>
             <p>
                 Kliknij tutaj, aby dodać nowy kurs.
             </p>
             <a href="/courses/create" class="btn">Więcej informacji</a>
+        </div>
         </div>
     </div>
 </section>
