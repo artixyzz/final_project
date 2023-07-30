@@ -7,6 +7,7 @@ import com.example.final_project.model.Subject;
 import com.example.final_project.reposiroty.CourseRepository;
 import com.example.final_project.reposiroty.UserRepository;
 import lombok.AllArgsConstructor;
+import lombok.NonNull;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -20,11 +21,11 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@NonNull
 @AllArgsConstructor
 public class AppUserService implements UserDetailsService {
     private final UserRepository userRepository;
     private final CourseRepository courseRepository;
-//    private final SecurityContextHolder securityContextHolder;
 
 
     @Override
@@ -39,7 +40,6 @@ public class AppUserService implements UserDetailsService {
         courseRepository.findById(courseId).ifPresent(course ->dataBaseUser.getUserCourses().add(course));
         userRepository.save(dataBaseUser);
     }
-
 
     public User getCurrentUser(){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();

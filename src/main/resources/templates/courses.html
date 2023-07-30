@@ -105,21 +105,21 @@
                 <div sec:authorize="hasRole('ROLE_ADMIN')">
                     <td>
                         <a th:href="@{/courses/update(id=${course.id})}">
-                            <button type="button" class="btn btn-outline-primary">Edytuj</button>
+                            <button class="btn btn-outline-primary">Edytuj</button>
                         </a>
                     </td>
                 </div>
                 <div sec:authorize="hasRole('ROLE_ADMIN')">
                     <td>
                         <form th:action="@{'/courses/delete/{id}'(id=${course.id})}" th:method="get">
-                            <button type="button" class="btn btn-outline-danger">Usuń</button>
+                            <button class="btn btn-outline-danger">Usuń</button>
                         </form>
                     </td>
                 </div>
                 <div sec:authorize="hasRole('ROLE_STUDENT')">
                     <td>
                         <form th:action="@{'/courses/register/{id}'(id=${course.id})}" th:method="get">
-                        <button type="button" class="btn btn-outline-success">Zapisz mnie</button>
+                        <button class="btn btn-outline-success">Zapisz mnie</button>
                         </form>
                     </td>
                 </div>

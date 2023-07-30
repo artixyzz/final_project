@@ -92,8 +92,9 @@ public class HomeController {
     @GetMapping("/courses/register/{id}")
     public String registerForCourse(@PathVariable Long id) {
         appUserService.registerForCourse(id);
-        return "userCourses";
+        return "redirect:/userCourses";
     }
+
 }
 
 
